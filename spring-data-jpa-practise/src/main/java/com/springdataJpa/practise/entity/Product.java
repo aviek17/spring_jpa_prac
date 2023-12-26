@@ -1,6 +1,7 @@
 package com.springdataJpa.practise.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,6 +20,11 @@ import java.time.LocalDateTime;
                 )
         }
 )
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
@@ -51,78 +57,5 @@ public class Product {
 
     @UpdateTimestamp
     private LocalDateTime productLastUpdated;
-
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    public LocalDateTime getProductCreated() {
-        return productCreated;
-    }
-
-    public void setProductCreated(LocalDateTime productCreated) {
-        this.productCreated = productCreated;
-    }
-
-    public LocalDateTime getProductLastUpdated() {
-        return productLastUpdated;
-    }
-
-    public void setProductLastUpdated(LocalDateTime productLastUpdated) {
-        this.productLastUpdated = productLastUpdated;
-    }
-
 
 }
