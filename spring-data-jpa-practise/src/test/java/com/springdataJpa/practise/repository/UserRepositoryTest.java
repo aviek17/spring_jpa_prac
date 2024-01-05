@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 public class UserRepositoryTest {
@@ -64,6 +65,24 @@ public class UserRepositoryTest {
 
         userList = userRepo.findByNameContaining(name);
 
+        userList.forEach((item)->{
+            System.out.println("My name is "+ item.getName() + " and my status is " + item.getStatus());
+        });
+
+        userList = userRepo.getAllUsers();
+
+        userList.forEach((item)->{
+            System.out.println("My name is "+ item.getName() + " and my status is " + item.getStatus());
+        });
+
+
+        List<String> userDummyList = userRepo.getUserList();
+
+        userDummyList.forEach((item)->{
+            System.out.println("My name is "+ item);
+        });
+
+        userList = userRepo.getUserByName("Aviek");
         userList.forEach((item)->{
             System.out.println("My name is "+ item.getName() + " and my status is " + item.getStatus());
         });
