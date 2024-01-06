@@ -5,6 +5,7 @@ import com.springdataJpa.practise.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -33,6 +34,11 @@ public class BookService {
     public void updateBookById(int id, Book bookInst){
         book = bookRepo.findById(id).get();
         book = bookInst;
+        book.setCreatedAt(LocalDateTime.now());
         bookRepo.save(book);
+    }
+
+    public void deleteBookById(int id){
+        bookRepo.deleteById(id);
     }
 }

@@ -4,6 +4,7 @@ package com.springdataJpa.practise.controller;
 import com.springdataJpa.practise.entity.Book;
 import com.springdataJpa.practise.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,7 @@ public class BookController {
             book.setCreatedAt(LocalDateTime.now());
             System.out.println(book);
             bookService.saveNewBook(book);
-            return ResponseEntity.ok("Book saved successfully");
+            return ResponseEntity.status(HttpStatus.CREATED).body("Book saved successfully");
         }catch(Exception E){
             return ResponseEntity.status(400).body(E.getMessage());
         }
@@ -66,6 +67,17 @@ public class BookController {
         }
         catch(Exception E){
             return ResponseEntity.status(400).body("Failed to update book");
+        }
+    }
+
+
+    @DeleteMapping("/delete-book/{id}")
+    public ResponseEntity<String> deleteBook(@PathVariable int id){
+        try{
+            bookService.deleteBookById(id);
+            return ResponseEntity.ok("Book delete successfully");
+        }catch(Exception E){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete book");
         }
     }
 
